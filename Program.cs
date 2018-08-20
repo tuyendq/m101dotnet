@@ -98,6 +98,17 @@ namespace M101DotNet
             await col.Find(new BsonDocument())
                 .ForEachAsync(doc => Console.WriteLine(doc));
 
+
+            /* Find with filter */
+            Console.WriteLine("Find with filter:");
+            var filter = new BsonDocument("Name", "Smith" );
+            var list = await col.Find(filter)
+                .ToListAsync();
+            foreach (var doc in list)
+            {
+                Console.WriteLine(doc);
+            }
+
         }
 
         class Person
